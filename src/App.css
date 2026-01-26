@@ -1,0 +1,293 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.editor-panel {
+  width: 50%;
+  background-color: #f8f9fa;
+  padding: 2rem;
+  overflow-y: auto;
+  border-right: 1px solid #e0e0e0;
+}
+
+.editor-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  background-color: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+}
+
+.required {
+  color: #e74c3c;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.add-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #357abd;
+}
+
+.experience-card {
+  background-color: #f8f9fa;
+  padding: 1.25rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.experience-card:last-child {
+  margin-bottom: 0;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.experience-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.remove-button {
+  background-color: transparent;
+  color: #e74c3c;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.remove-button:hover {
+  color: #c0392b;
+}
+
+.preview-panel {
+  width: 50%;
+  background-color: white;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.preview-header {
+  margin-bottom: 2rem;
+}
+
+.preview-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.preview-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.resume-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.resume-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.resume-divider {
+  width: 100px;
+  height: 3px;
+  background-color: #4a90e2;
+  margin: 0 auto 1rem;
+}
+
+.resume-contact {
+  font-size: 0.9rem;
+  color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-separator {
+  color: #999;
+}
+
+.resume-section {
+  margin-bottom: 2rem;
+}
+
+.resume-section:last-child {
+  margin-bottom: 0;
+}
+
+.resume-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 0.5rem;
+}
+
+.resume-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.resume-experience-item {
+  margin-bottom: 1.5rem;
+}
+
+.resume-experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-job-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.resume-duration {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.resume-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Scrollbar styling */
+.editor-panel::-webkit-scrollbar,
+.preview-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor-panel::-webkit-scrollbar-track,
+.preview-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.editor-panel::-webkit-scrollbar-thumb,
+.preview-panel::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.editor-panel::-webkit-scrollbar-thumb:hover,
+.preview-panel::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
