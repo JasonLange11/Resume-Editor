@@ -188,21 +188,14 @@
 
 .resume-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .resume-name {
   font-size: 2rem;
   font-weight: 700;
   color: #333;
-  margin-bottom: 0.75rem;
-}
-
-.resume-divider {
-  width: 100px;
-  height: 3px;
-  background-color: #4a90e2;
-  margin: 0 auto 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .resume-contact {
@@ -231,8 +224,6 @@
   font-weight: 600;
   color: #333;
   margin-bottom: 0.75rem;
-  border-bottom: 2px solid #4a90e2;
-  padding-bottom: 0.5rem;
 }
 
 .resume-text {
@@ -249,18 +240,39 @@
   margin-bottom: 0;
 }
 
+.resume-experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+}
+
 .resume-job-title {
   font-size: 1.1rem;
   font-weight: 600;
   color: #333;
-  margin-bottom: 0.25rem;
+  margin: 0;
 }
 
 .resume-duration {
   font-size: 0.9rem;
   color: #666;
   font-style: italic;
-  margin-bottom: 0.5rem;
+  margin: 0;
+  text-align: right;
+}
+
+.resume-company {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 0.5rem 0;
+}
+
+.resume-location {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
 }
 
 .resume-description {
@@ -290,4 +302,55 @@
 .editor-panel::-webkit-scrollbar-thumb:hover,
 .preview-panel::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.resume-project-item {
+  margin-bottom: 1.5rem;
+}
+
+.resume-project-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-project-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+}
+
+.resume-education-item {
+  margin-bottom: 1.5rem;
+}
+
+.resume-education-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+}
+
+.resume-degree {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.resume-graduation-date {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  margin: 0;
+  text-align: right;
+}
+
+.resume-school {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
 }
