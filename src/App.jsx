@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './App.css'
+import html2pdf from 'html2pdf.js'
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -138,6 +139,20 @@ function App() {
     return phoneRegex.test(phone.replace(/\s/g, ''))
   }
 
+  const resumeRef = useRef()
+
+  const handleExportPDF = () => {
+    const element = resumeRef.current
+    const opt = {
+      margin: 10,
+      filename: `${personalInfo.fullName || 'resume'}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    }
+    html2pdf().set(opt).from(element).save()
+  }
+
   return (
     <div className="app-container">
       <div className="editor-panel">
@@ -230,114 +245,6 @@ function App() {
             <button
               type="button"
               className="add-button"
-              onClick={handleAddProject}
-            >
-              Add Project
-            </button>
-          </div>
-          {projects.map((proj, index) => (
-            <div key={proj.id} className="experience-card">
-              <div className="experience-header">
-                <h3 className="experience-number">Project #{index + 1}</h3>
-                {projects.length > 1 && (
-                  <button
-                    type="button"
-                    className="remove-button"
-                    onClick={() => handleRemoveProject(proj.id)}
-                  >
-                    Remove
-                  </button>
-                )}
-              </div>
-              <div className="form-group">
-                <label htmlFor={`projectName-${proj.id}`}>Project Name</label>
-                <input
-                  type="text"
-                  id={`projectName-${proj.id}`}
-                  value={proj.projectName}
-                  onChange={(e) => handleProjectChange(proj.id, 'projectName', e.target.value)}
-                  placeholder="Enter project name"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor={`projectDescription-${proj.id}`}>Description</label>
-                <textarea
-                  id={`projectDescription-${proj.id}`}
-                  value={proj.description}
-                  onChange={(e) => handleProjectChange(proj.id, 'description', e.target.value)}
-                  placeholder="Enter project description"
-                  rows="4"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="form-section">
-          <div className="section-header">
-            <h2 className="section-title">PROJECTS</h2>
-            <button
-              type="button"
-              className="add-button"
-              onClick={handleAddEducation}
-            >
-              Add Education
-            </button>
-          </div>
-          {education.map((edu, index) => (
-            <div key={edu.id} className="experience-card">
-              <div className="experience-header">
-                <h3 className="experience-number">Education #{index + 1}</h3>
-                {education.length > 1 && (
-                  <button
-                    type="button"
-                    className="remove-button"
-                    onClick={() => handleRemoveEducation(edu.id)}
-                  >
-                    Remove
-                  </button>
-                )}
-              </div>
-              <div className="form-group">
-                <label htmlFor={`school-${edu.id}`}>School/University</label>
-                <input
-                  type="text"
-                  id={`school-${edu.id}`}
-                  value={edu.school}
-                  onChange={(e) => handleEducationChange(edu.id, 'school', e.target.value)}
-                  placeholder="Enter school name"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor={`degree-${edu.id}`}>Degree</label>
-                <input
-                  type="text"
-                  id={`degree-${edu.id}`}
-                  value={edu.degree}
-                  onChange={(e) => handleEducationChange(edu.id, 'degree', e.target.value)}
-                  placeholder="Enter degree"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor={`graduationDate-${edu.id}`}>Graduation Date</label>
-                <input
-                  type="text"
-                  id={`graduationDate-${edu.id}`}
-                  value={edu.graduationDate}
-                  onChange={(e) => handleEducationChange(edu.id, 'graduationDate', e.target.value)}
-                  placeholder="e.g., May 2020"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="form-section">
-          <div className="section-header">
-            <h2 className="section-title">EDUCATION</h2>
-            <button
-              type="button"
-              className="add-button"
               onClick={handleAddExperience}
             >
               Add Experience
@@ -410,14 +317,127 @@ function App() {
             </div>
           ))}
         </div>
+
+        <div className="form-section">
+          <div className="section-header">
+            <h2 className="section-title">PROJECTS</h2>
+            <button
+              type="button"
+              className="add-button"
+              onClick={handleAddProject}
+            >
+              Add Project
+            </button>
+          </div>
+          {projects.map((proj, index) => (
+            <div key={proj.id} className="experience-card">
+              <div className="experience-header">
+                <h3 className="experience-number">Project #{index + 1}</h3>
+                {projects.length > 1 && (
+                  <button
+                    type="button"
+                    className="remove-button"
+                    onClick={() => handleRemoveProject(proj.id)}
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor={`projectName-${proj.id}`}>Project Name</label>
+                <input
+                  type="text"
+                  id={`projectName-${proj.id}`}
+                  value={proj.projectName}
+                  onChange={(e) => handleProjectChange(proj.id, 'projectName', e.target.value)}
+                  placeholder="Enter project name"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor={`projectDescription-${proj.id}`}>Description</label>
+                <textarea
+                  id={`projectDescription-${proj.id}`}
+                  value={proj.description}
+                  onChange={(e) => handleProjectChange(proj.id, 'description', e.target.value)}
+                  placeholder="Enter project description"
+                  rows="4"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="form-section">
+          <div className="section-header">
+            <h2 className="section-title">EDUCATION</h2>
+            <button
+              type="button"
+              className="add-button"
+              onClick={handleAddEducation}
+            >
+              Add Education
+            </button>
+          </div>
+          {education.map((edu, index) => (
+            <div key={edu.id} className="experience-card">
+              <div className="experience-header">
+                <h3 className="experience-number">Education #{index + 1}</h3>
+                {education.length > 1 && (
+                  <button
+                    type="button"
+                    className="remove-button"
+                    onClick={() => handleRemoveEducation(edu.id)}
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor={`school-${edu.id}`}>School/University</label>
+                <input
+                  type="text"
+                  id={`school-${edu.id}`}
+                  value={edu.school}
+                  onChange={(e) => handleEducationChange(edu.id, 'school', e.target.value)}
+                  placeholder="Enter school name"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor={`degree-${edu.id}`}>Degree</label>
+                <input
+                  type="text"
+                  id={`degree-${edu.id}`}
+                  value={edu.degree}
+                  onChange={(e) => handleEducationChange(edu.id, 'degree', e.target.value)}
+                  placeholder="Enter degree"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor={`graduationDate-${edu.id}`}>Graduation Date</label>
+                <input
+                  type="text"
+                  id={`graduationDate-${edu.id}`}
+                  value={edu.graduationDate}
+                  onChange={(e) => handleEducationChange(edu.id, 'graduationDate', e.target.value)}
+                  placeholder="e.g., May 2020"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="preview-panel">
         <div className="preview-header">
-          <h1 className="preview-title">Live Preview</h1>
-          <p className="preview-subtitle">Your resume preview updates in real-time</p>
+          <div>
+            <h1 className="preview-title">Live Preview</h1>
+            <p className="preview-subtitle">Your resume preview updates in real-time</p>
+          </div>
+          <button className="export-button" onClick={handleExportPDF}>
+            Export as PDF
+          </button>
         </div>
-        <div className="resume-preview">
+        <div className="resume-preview" ref={resumeRef}>
           <div className="resume-header">
             <h1 className="resume-name">{capitalizeWords(personalInfo.fullName) || 'Your Name'}</h1>
             <div className="resume-contact">
